@@ -1,40 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Parcial 2 - PW - APP CLIMA</title>
+  <link rel="stylesheet" href="app.css" />
 </head>
 <body>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Departamento</th>
-                <th>Cargo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ana Gómez</td>
-                <td>Recursos Humanos</td>
-                <td>Gerente</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Carlos Pérez</td>
-                <td>Finanzas</td>
-                <td>Analista</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>María López</td>
-                <td>IT</td>
-                <td>Desarrollador</td>
-            </tr>
-        </tbody>
-    </table>
+  <main class="app">
+    <header class="header">
+      <h1 class="title">Tu App del Clima</h1>
+      <p class="subtitle">Consulta el clima por ciudad gracias a: OpenWeatherMap</p>
+    </header>
+
+    <section class="card">
+      <form id="weather-form" class="search" autocomplete="off">
+        <label for="city" class="sr-only">Ciudad</label>
+        <input
+          id="city"
+          name="city"
+          type="text"
+          placeholder="Ej: Bogotá, Medellín, Madrid"
+          spellcheck="false"
+          required
+        />
+        <button id="search-btn" type="submit" aria-label="Buscar clima">Buscar</button>
+      </form>
+
+      <div id="status" role="status" aria-live="polite" class="status"></div>
+
+      <div class="results-header">
+        <h2 class="results-title">Resultados</h2>
+        <button id="clear-all" class="btn-clear-all" type="button" aria-label="Borrar todos los resultados">
+          Borrar todo
+        </button>
+      </div>
+      <section id="results-list" class="results-list" aria-live="polite">
+
+      </section>
+    </section>
+
+    <footer class="footer">
+      <p>Realizado con la API de <a href="https://openweathermap.org/" target="_blank" rel="noopener">OpenWeatherMap</a></p>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
 </body>
 </html>
