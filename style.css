@@ -1,0 +1,86 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(to right, #74b9ff, #a29bfe);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  transition: background 0.5s ease-in-out;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.contenedor {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+}
+
+input {
+  width: 70%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  font-size: 1em;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background: #0984e3;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #74b9ff;
+}
+
+.resultado {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.icono-clima {
+  width: 100px;
+  height: 100px;
+}
+
+.error {
+  background: rgba(255, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  body {
+    background: linear-gradient(to bottom, #74b9ff, #6c5ce7);
+  }
+
+  .contenedor {
+    width: 95%;
+  }
+
+  input,
+  button {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
