@@ -1,40 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Buscador de Países 🌍</title>
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Departamento</th>
-                <th>Cargo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ana Gómez</td>
-                <td>Recursos Humanos</td>
-                <td>Gerente</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Carlos Pérez</td>
-                <td>Finanzas</td>
-                <td>Analista</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>María López</td>
-                <td>IT</td>
-                <td>Desarrollador</td>
-            </tr>
-        </tbody>
-    </table>
+    <h1>🌍 Buscador de Países</h1>
+
+    <div id="filtros">
+        <input type="text" id="buscar" placeholder="Buscar país...">
+        <select id="region">
+        <option value="">Todas las regiones</option>
+        <option value="Africa">África</option>
+        <option value="North America">América del Norte</option>
+        <option value="South America">América del Sur</option>
+        <option value="Asia">Asia</option>
+        <option value="Europe">Europa</option>
+        <option value="Oceania">Oceanía</option>
+        </select>
+        <button id="cargar">Buscar</button>
+    </div>
+
+    <div id="contenedor"></div>
+
+    <script src="app.js"></script>
 </body>
 </html>
