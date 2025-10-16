@@ -1,40 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Países del Mundo</title>
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Departamento</th>
-                <th>Cargo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ana Gómez</td>
-                <td>Recursos Humanos</td>
-                <td>Gerente</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Carlos Pérez</td>
-                <td>Finanzas</td>
-                <td>Analista</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>María López</td>
-                <td>IT</td>
-                <td>Desarrollador</td>
-            </tr>
-        </tbody>
-    </table>
+    <h1>Lista de Países</h1>
+    <div>
+        <input type="text" id="buscar" placeholder="Buscar país...">
+        <select id="region">
+            <option value="">Todas las regiones</option>
+            <option value="Africa">África</option>
+            <option value="Americas">América</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europa</option>
+            <option value="Oceania">Oceanía</option>
+        </select>
+        <button id="cargar">Ver Países</button>
+    </div>
+
+    <p id="mensaje"></p>
+    <div id="cardContainer"></div>
+
+    <script>
+        let paises = [];
+
+        document.getElementById('cargar').addEventListener('click', async () => {
+            try {
+                let container = document.getElementById('cardContainer');
+                container.innerHTML = ''; // limpiar antes de agregar
+                document.getElementById('mensaje').textContent = "Cargando países...";
+
+                let response = await fetch(`https://restcountries.com/v3.1/independent?status=true`);
+                paises = await response.json();
+
+                document.getElementById('mensaje').textContent = "";
+                mostrarPaises(paises);
+
+            } catch (error) {
+                console.error('Error al cargar los países:', error);
+                document.getElementById('mensaje').textContent = " Error al cargar los países.";
+            }
+        });
+
+        
+        function mostrarPaises(lista) {
+            let container = document.getElementById('cardContainer');
+            container.innerHTML = '';
+            let mensaje = document.getElementById('mensaje');
+
+            if (lista.length === 0) {
+                mensaje.textContent = "No se encontraron resultados";
+                return;
+            }
+
+            mensaje.textContent = "";
+
+            for (let pais of lista) {
+                let card = document.createElement('div');
+                card.classList.add('card');
+
+                
+                let img = document.createElement('img');
+                img.src = pais.flags.png;
+                img.alt = "Bandera de " + pais.name.common;
+                card.appendChild(img);
+
+                
+                let title = document.createElement('h2');
+                title.textContent = pais.name.common;
+                card.appendChild(title);
+
+                
+                let region = document.createElement('p');
+                region.textContent = `Región: ${pais.region}`;
+                card.appendChild(region);
+
+                
+                let poblacion = document.createElement('p');
+                poblacion.textContent = `Población: ${pais.population.toLocaleString()}`;
+                card.appendChild(poblacion);
+
+                container.appendChild(card);
+            }
+        }
+
+        // Filtros
+        document.getElementById('buscar').addEventListener('input', filtrar);
+        document.getElementById('region').addEventListener('change', filtrar);
+
+        function filtrar() {
+            let texto = document.getElementById('buscar').value.toLowerCase();
+            let region = document.getElementById('region').value;
+
+            let filtrados = paises.filter(pais => {
+                let coincideNombre = pais.name.common.toLowerCase().includes(texto);
+                let coincideRegion = region === "" || pais.region === region;
+                return coincideNombre && coincideRegion;
+            });
+
+            mostrarPaises(filtrados);
+        }
+    </script>
 </body>
 </html>
