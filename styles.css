@@ -1,0 +1,106 @@
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background: linear-gradient(135deg, #e3f2fd, #ffffff);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #333;
+}
+
+
+h1 {
+  background: linear-gradient(90deg, #0077cc, #00b4d8);
+  color: white;
+  padding: 20px;
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(0, 119, 204, 0.3);
+}
+
+
+.filtros {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+input, select, button {
+  padding: 10px 14px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+
+input:focus, select:focus {
+  border-color: #0077cc;
+  box-shadow: 0 0 5px rgba(0, 119, 204, 0.5);
+}
+
+
+button {
+  background-color: #0077cc;
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
+
+
+#contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.tarjeta {
+  background: white;
+  width: 220px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+}
+
+.tarjeta:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.tarjeta img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.tarjeta h3 {
+  margin: 10px 0 5px;
+  font-size: 1.1rem;
+  color: #0077cc;
+}
+
+.tarjeta p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+#mensaje {
+  color: #777;
+  font-size: 1.1rem;
+  margin-top: 20px;
+  font-style: italic;
+}
