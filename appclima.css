@@ -1,0 +1,77 @@
+body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #89f7fe, #66a6ff);
+      color: #fff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 250px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      background-color: #0056d6;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #003f9e;
+    }
+
+    #resultado {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      width: 300px;
+    }
+
+    #resultado img {
+      width: 80px;
+    }
+
+    .error {
+      background-color: rgba(255, 0, 0, 0.6);
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    /* 📱 Media Query */
+    @media (max-width: 600px) {
+      body {
+        background: linear-gradient(135deg, #6dd5ed, #2193b0);
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      #resultado {
+        width: 90%;
+      }
+    }

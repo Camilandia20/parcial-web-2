@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulta del Clima</title>
+  <link rel="stylesheet" href="appclima.css">
+</head>
+<body>
+  <h1>Consulta del Clima</h1>
+
+  <div>
+    <input type="text" id="ciudad" placeholder="Escribe una ciudad...">
+    <button id="buscar">Buscar</button>
+  </div>
+
+  <div id="resultado"></div>
+
+  <script>
+    document.getElementById("buscar").addEventListener("click", async () => {
+      let ciudad = document.getElementById("ciudad").value.trim();
+      let contenedor = document.getElementById("resultado");
+      contenedor.innerHTML = "";
+
+      if (!ciudad) {
+        contenedor.innerHTML = '<p class="error">Por favor ingresa una ciudad.</p>';
+        return;
+      }
+
+      let apiKey = "bafb1d2036ce6c64560d306665344d86"; 
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=${apiKey}&units=metric&lang=es`;
+
+      try {
+        const respuesta = await fetch(url);
+
+        if (!respuesta.ok) {
+          throw new Error("Ciudad no encontrada");
+        }
+
+        let data = await respuesta.json();
+        let nombre = data.name;
+        let temperatura = data.main.temp.toFixed(1);
+        let descripcion = data.weather[0].description;
+        let icono = data.weather[0].icon;
+
+        contenedor.innerHTML = `
+          <h2>${nombre}</h2>
+          <img src="https://openweathermap.org/img/wn/${icono}@2x.png" alt="Clima">
+          <p><strong>Temperatura:</strong> ${temperatura} °C</p>
+          <p><strong>Descripción:</strong> ${descripcion}</p>
+        `;
+      } catch (error) {
+        contenedor.innerHTML = `<p class="error">${error.message === "Ciudad no encontrada" ? " Ciudad no encontrada" : " Error de conexión"}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>
