@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscador de Películas 🎬</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Buscador de Películas 🎬</h1>
+
+  <select id="peliculas">
+    <option value="">Selecciona una película</option>
+    <option value="cars">Cars</option>
+    <option value="toy_story">Toy Story</option>
+    <option value="frozen">Frozen</option>
+    <option value="coco">Coco</option>
+    <option value="moana">Moana</option>
+    <option value="nemo">Buscando a Nemo</option>
+    <option value="lion_king">El Rey León</option>
+  </select>
+
+  <button id="buscar">Buscar</button>
+
+  <div id="resultados"></div>
+
+  <script>
+    const peliculas = {
+      cars: {
+        titulo: "Cars",
+        año: 2006,
+        genero: "Animación, Aventura, Comedia",
+        director: "John Lasseter",
+        sinopsis: "Rayo McQueen es un coche de carreras que aprende que la vida es más importante que la fama."
+      },
+      toy_story: {
+        titulo: "Toy Story",
+        año: 1995,
+        genero: "Animación, Aventura, Comedia",
+        director: "John Lasseter",
+        sinopsis: "Los juguetes de Andy cobran vida cuando los humanos no los ven, y Woody se siente amenazado por la llegada de Buzz Lightyear."
+      },
+      frozen: {
+        titulo: "Frozen",
+        año: 2013,
+        genero: "Animación, Fantasía, Aventura",
+        director: "Chris Buck, Jennifer Lee",
+        sinopsis: "La princesa Elsa esconde un poder mágico que desata un invierno eterno en su reino."
+      },
+      coco: {
+        titulo: "Coco",
+        año: 2017,
+        genero: "Animación, Familia, Fantasía",
+        director: "Lee Unkrich, Adrian Molina",
+        sinopsis: "Miguel sueña con ser músico y viaja al mundo de los muertos para descubrir la verdad sobre su familia."
+      },
+      moana: {
+        titulo: "Moana",
+        año: 2016,
+        genero: "Animación, Aventura, Comedia",
+        director: "Ron Clements, John Musker",
+        sinopsis: "Una joven aventurera navega por el océano para salvar a su pueblo con la ayuda del semidiós Maui."
+      },
+      nemo: {
+        titulo: "Buscando a Nemo",
+        año: 2003,
+        genero: "Animación, Aventura, Comedia",
+        director: "Andrew Stanton, Lee Unkrich",
+        sinopsis: "Un pez payaso llamado Marlin recorre el océano para rescatar a su hijo Nemo."
+      },
+      lion_king: {
+        titulo: "El Rey León",
+        año: 1994,
+        genero: "Animación, Aventura, Drama",
+        director: "Roger Allers, Rob Minkoff",
+        sinopsis: "Simba, un joven león, debe aceptar su destino como rey tras la muerte de su padre Mufasa."
+      }
+    };
+
+    document.getElementById('buscar').addEventListener('click', () => {
+      const seleccion = document.getElementById('peliculas').value;
+      const resultados = document.getElementById('resultados');
+
+      if (!seleccion) {
+        resultados.innerHTML = "Por favor selecciona una película.";
+        return;
+      }
+
+      const peli = peliculas[seleccion];
+      resultados.innerHTML = `
+        <div class="tarjeta">
+          <h2>${peli.titulo}</h2>
+          <p><strong>Año:</strong> ${peli.año}</p>
+          <p><strong>Género:</strong> ${peli.genero}</p>
+          <p><strong>Director:</strong> ${peli.director}</p>
+          <p><strong>Sinopsis:</strong> ${peli.sinopsis}</p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
