@@ -1,40 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buscador de Artistas</title>
+  <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Departamento</th>
-                <th>Cargo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ana Gómez</td>
-                <td>Recursos Humanos</td>
-                <td>Gerente</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Carlos Pérez</td>
-                <td>Finanzas</td>
-                <td>Analista</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>María López</td>
-                <td>IT</td>
-                <td>Desarrollador</td>
-            </tr>
-        </tbody>
-    </table>
+  <header>
+    <h1>Buscador de Artistas</h1>
+    <div class="buscador">
+      <input type="text" id="artistaInput" placeholder="Escribe el nombre de un artista...">
+      <button id="buscarBtn">Buscar</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="resultado" class="resultado"></div>
+  </main>
+
+  <script>
+
+    const btn = document.getElementById('buscarBtn');
+const input = document.getElementById('artistaInput');
+const contenedor = document.getElementById('resultado');
+
+btn.addEventListener('click', buscarArtista);
+
+async function buscarArtista() {
+  const nombre = input.value.trim();
+  contenedor.innerHTML = "";
+
+  if (nombre === "") {
+    mostrarError("Por favor, escribe un nombre de artista.");
+    return;
+  }
+
+  try {
+    const resArtista = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://theaudiodb.com/api/v1/json/2/search.php?s=${nombre}`)}`);
+    const data = await resArtista.json();
+
+    if (!data.artists) {
+      mostrarError("No se encontró el artista. Intenta con otro nombre.");
+      return;
+    }
+
+    const artista = data.artists[0];
+
+    const card = document.createElement("div");
+    card.classList.add("card");
+    card.innerHTML = `
+      <h2>${artista.strArtist}</h2>
+      <p><strong>País:</strong> ${artista.strCountry || "Desconocido"}</p>
+      <p><strong>Género:</strong> ${artista.strGenre || "No especificado"}</p>
+      ${artista.strArtistThumb ? `<img src="${artista.strArtistThumb}" alt="${artista.strArtist}">` : "<p>Sin imagen disponible</p>"}
+    `;
+    contenedor.appendChild(card);
+
+    const resAlbums = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(`https://theaudiodb.com/api/v1/json/2/album.php?i=${artista.idArtist}`)}`);
+    const dataAlbums = await resAlbums.json();
+
+    const albumDiv = document.createElement("div");
+    albumDiv.classList.add("albumes");
+    albumDiv.innerHTML = "<h3>Álbumes:</h3>";
+
+    if (dataAlbums.album) {
+      const lista = document.createElement("ul");
+      dataAlbums.album.forEach(album => {
+        const li = document.createElement("li");
+        li.textContent = `${album.strAlbum} (${album.intYearReleased || "Año desconocido"})`;
+        lista.appendChild(li);
+      });
+      albumDiv.appendChild(lista);
+    } else {
+      albumDiv.innerHTML += "<p>No hay álbumes disponibles.</p>";
+    }
+
+    contenedor.appendChild(albumDiv);
+
+  } catch (error) {
+    console.error(error);
+    mostrarError("Ocurrió un error al buscar el artista.");
+  }
+}
+
+function mostrarError(mensaje) {
+  contenedor.innerHTML = `<p style="color:red; text-align:center;">${mensaje}</p>`;
+}
+  </script>
 </body>
 </html>
