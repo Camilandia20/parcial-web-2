@@ -1,0 +1,120 @@
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(135deg, #9628d6, #3b0a45);
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+
+h1 {
+  color: #ffef96;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 25px;
+}
+
+input {
+  padding: 12px;
+  width: 250px;
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #310606;
+  color: #ffef96;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease, background 0.3s;
+}
+
+button:hover {
+  background-color: #ffef96;
+  color: #310606;
+  transform: scale(1.05);
+}
+
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+
+li {
+  background: rgba(255,255,255,0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+
+.artist-img, .artista-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+
+h3 {
+  color: #ffef96;
+  margin: 10px 0;
+}
+
+p {
+  color: #f8f8f8;
+  margin: 5px 0;
+}
+
+h4 {
+  margin-top: 10px;
+  color: #ffef96;
+  text-decoration: underline;
+}
+
+
+.error {
+  color: #ffef96;
+  font-weight: bold;
+  background: rgba(0,0,0,0.3);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
