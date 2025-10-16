@@ -1,40 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="app.css" />
+<title>UNIMICINE</title>
+
 </head>
 <body>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Departamento</th>
-                <th>Cargo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ana Gómez</td>
-                <td>Recursos Humanos</td>
-                <td>Gerente</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Carlos Pérez</td>
-                <td>Finanzas</td>
-                <td>Analista</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>María López</td>
-                <td>IT</td>
-                <td>Desarrollador</td>
-            </tr>
-        </tbody>
-    </table>
+<header class="header">
+    <h1>Buscador de Películas</h1>
+    <p class="hint">Escribe un título y presiona Buscar</p>
+</header>
+
+<main class="main">
+    <div class="search">
+        <input id="q" type="search" placeholder="Busca una Pelicula" aria-label="Buscar" />
+        <button id="btnSearch">Buscar</button>
+    </div>
+
+    <div id="status" class="status" aria-live="polite">Listo.</div>
+
+    <section id="results" class="grid" aria-live="polite"></section>
+        </main>
+
+
+    <div id="overlay" class="overlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button id="closeModal" class="modal-close" aria-label="Cerrar">✕</button>
+        <img id="modalPoster" class="modal-poster" alt="Póster" />
+        <div class="modal-content">
+        <h2 id="modalTitle">Título</h2>
+        <p id="modalMeta" class="meta"></p>
+        <p id="modalPlot" class="plot"></p>
+        </div>
+    </div>
+    </div>
+
+<script src="app.js"></script>
 </body>
 </html>
