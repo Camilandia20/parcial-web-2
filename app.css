@@ -1,62 +1,118 @@
-/* app.css - Estilos para el index */
+:root {
+  --bg: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #60a5fa;
+}
+
+* {
+  box-sizing: border-box;
+}
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f4f6fb;
-    color: #222;
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
 }
 
 header {
-    background: #2d6cdf;
-    color: #fff;
-    padding: 1.5rem 0;
-    text-align: center;
-    font-size: 2rem;
-    letter-spacing: 1px;
+  position: sticky;
+  top: 0;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: #0b1224;
+}
+
+input,
+button {
+  padding: 10px 12px;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+}
+
+input {
+  min-width: 260px;
+  background: #0b1224;
+  color: var(--text);
+  outline: none;
+}
+
+button {
+  background: var(--primary);
+  color: #0b1224;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 main {
-    max-width: 800px;
-    margin: 2rem auto;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(44, 76, 130, 0.08);
-    padding: 2rem;
+  width: min(1000px, 92%);
+  margin: 18px auto;
 }
 
-h1, h2, h3 {
-    color: #2d6cdf;
-    margin-top: 0;
+#status {
+  margin: 8px 0 16px;
+  color: var(--muted);
 }
 
-p {
-    line-height: 1.7;
-    margin-bottom: 1.2rem;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
 }
 
-button, .btn {
-    background: #2d6cdf;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 0.7rem 1.5rem;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background 0.2s;
+.card {
+  background: var(--card);
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
 }
 
-button:hover, .btn:hover {
-    background: #1a4fa0;
+.card img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  display: block;
 }
 
-footer {
-    text-align: center;
-    padding: 1rem 0;
-    background: #e9eef7;
-    color: #666;
-    font-size: 0.95rem;
-    margin-top: 2rem;
-    border-top: 1px solid #d3dbe8;
+.card .info {
+  padding: 10px;
+}
+
+.title {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.year {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.details {
+  margin-top: 18px;
+  background: var(--card);
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.details h2 {
+  margin: 0 0 8px;
+}
+
+.details p {
+  margin: 6px 0;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

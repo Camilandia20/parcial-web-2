@@ -1,40 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Departamento</th>
-                <th>Cargo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ana Gómez</td>
-                <td>Recursos Humanos</td>
-                <td>Gerente</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Carlos Pérez</td>
-                <td>Finanzas</td>
-                <td>Analista</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>María López</td>
-                <td>IT</td>
-                <td>Desarrollador</td>
-            </tr>
-        </tbody>
-    </table>
-</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>App de Cine</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <header>
+      <input
+        id="q"
+        type="search"
+        placeholder="Escribe el título…"
+        aria-label="Buscar película"
+      />
+      <button id="btn" aria-label="Buscar">Buscar</button>
+    </header>
+    <main>
+      <div id="status">Escribe un título y presiona Buscar.</div>
+      <section
+        id="grid"
+        class="grid"
+        aria-label="Resultados"
+      ></section>
+      <section id="details" class="details" hidden aria-live="polite">
+        <h2 id="d-title"></h2>
+        <p id="d-meta"></p>
+        <p id="d-plot"></p>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
 </html>
