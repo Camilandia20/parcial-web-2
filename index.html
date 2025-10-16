@@ -1,40 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>App del Clima</title>
+
+    <link rel="stylesheet" href="app.css">
 </head>
 <body>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Departamento</th>
-                <th>Cargo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>Ana Gómez</td>
-                <td>Recursos Humanos</td>
-                <td>Gerente</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Carlos Pérez</td>
-                <td>Finanzas</td>
-                <td>Analista</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>María López</td>
-                <td>IT</td>
-                <td>Desarrollador</td>
-            </tr>
-        </tbody>
-    </table>
+    <main class="app">
+    
+    <header>
+    <h1>App del Clima</h1>
+    <p>Consulta el clima de cualquier ciudad</p>
+    </header>
+
+    
+    <section class="buscador">
+    <input type="text" id="city" placeholder="Escribe una ciudad...">
+    <button id="buscar">Consultar</button>
+    </section>
+
+    <section id="resultado">
+    </section>
+
+    <p id="mensaje"></p>
+    </main>
+
+
+<script src="app.js" defer></script>
 </body>
 </html>
+
